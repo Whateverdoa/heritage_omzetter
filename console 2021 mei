@@ -1,0 +1,331 @@
+"C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\Scripts\python.exe" "C:\Users\Dhr. Ten Hoonte\AppData\Local\JetBrains\Toolbox\apps\PyCharm-P\ch-0\211.7142.13\plugins\python\helpers\pydev\pydevconsole.py" --mode=client --port=49900
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+sys.path.extend(['C:\\Users\\Dhr. Ten Hoonte\\PycharmProjects\\heritage_omzetter', 'C:/Users/Dhr. Ten Hoonte/PycharmProjects/heritage_omzetter'])
+PyDev console: starting.
+Python 3.9.2 (tags/v3.9.2:1a79785, Feb 19 2021, 13:44:55) [MSC v.1928 64 bit (AMD64)] on win32
+runfile('C:/Users/Dhr. Ten Hoonte/PycharmProjects/heritage_omzetter/ABC/user_interface.py', wdir='C:/Users/Dhr. Ten Hoonte/PycharmProjects/heritage_omzetter/ABC')
+ic| pad.parent: WindowsPath('C:/Users/Dhr. Ten Hoonte/PycharmProjects/heritage_omzetter/aangeleverde bestanden')
+ic| pad.name: 'Serials 06.05.2021.csv'
+ic| pad.stem: 'Serials 06.05.2021'
+ic| pad.parent: WindowsPath('C:/Users/Dhr. Ten Hoonte/PycharmProjects/heritage_omzetter/aangeleverde bestanden')
+ic| wikkels: 108
+ic| df.head():     serials
+               0  MH4BJH68
+               1  MH376MP6
+               2  MH46D33J
+               3  MHBAM778
+               4  MH73NVK7
+ic| delerr: 36
+ic| len(begin_eind_lijst_blokken): 4
+def basis_lijst():
+    def maak_simpele_lijst(begin_nummer, totaal, posities):
+        '''list comp voor maken nummer lijst, 3 kolommen
+        kijk voor benamingen in project lijst bewerken'''
+        eind = begin_nummer + totaal
+        nummers = [f'{x:>{0}{posities}}' for x in range(begin_nummer, eind)]
+        return nummers
+    return maak_simpele_lijst
+numbers_to_work_with10k = basis_lijst()
+numlijst10k_1=numbers_to_work_with10k(1,10_000,6)
+numlijst10k_1=pd.DataFrame(numbers_to_work_with10k(1,100_000,6))
+def dataframe_cutter(df):
+    list_of_df = [df.loc[i:i + blok_lengte - 1, :].reset_index(drop=True) for i in range(0, len(df), blok_lengte)]
+
+def dataframe_cutter(df, blok_lengte):
+
+    list_of_df = [df.loc[i:i + blok_lengte - 1, :].reset_index(drop=True) for i in range(0, len(df), blok_lengte)]
+    return list_of_df
+verdeelde_list_of_df = dataframe_cutter(numlijst10k_1,4)
+verdeelde_list_of_df = dataframe_cutter(numlijst10k_1,25000)
+vdp1 = dataframe_cutter(numlijst10k_1[0],1000)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+  File "<input>", line 3, in dataframe_cutter
+  File "<input>", line 3, in <listcomp>
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\indexing.py", line 889, in __getitem__
+    return self._getitem_tuple(key)
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\indexing.py", line 1063, in _getitem_tuple
+    self._has_valid_tuple(tup)
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\indexing.py", line 720, in _has_valid_tuple
+    self._validate_key_length(key)
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\indexing.py", line 761, in _validate_key_length
+    raise IndexingError("Too many indexers")
+pandas.core.indexing.IndexingError: Too many indexers
+vdp1 = dataframe_cutter(verdeelde_list_of_df[0],1000)
+ rol1= dataframe_cutter(vdp1[0])
+  File "<input>", line 1
+    rol1= dataframe_cutter(vdp1[0])
+IndentationError: unexpected indent
+ rol1= vdp1[0]
+  File "<input>", line 1
+    rol1= vdp1[0]
+IndentationError: unexpected indent
+rol1=vdp1[0]
+baan1= pd.concat(vdp1[0:3])
+baan1= pd.concat(vdp1[0:3], axis=1)
+baan1= pd.concat(vdp1[0:4], axis=1)
+baan1.columns([1,2,3,4])
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: 'Int64Index' object is not callable
+baan1.columns
+Int64Index([0, 0, 0, 0], dtype='int64')
+baan1.colums(columnnames)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\generic.py", line 5465, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'DataFrame' object has no attribute 'colums'
+baan1.columns(columnnames)
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: 'Int64Index' object is not callable
+baan1.columns=columnnames
+baan1['pdf1'] = leeg.pdf
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+NameError: name 'leeg' is not defined
+baan1['pdf1'] = "leeg.pdf"
+order202129654 = pd.DataFrame(numbers_to_work_with10k(100000833381,361_000,12))
+order202129654_gedeeld = dataframe_cutter(order202129654,180500)
+order202129654['pdf','omschrijving'] = ('leeg.pdf', '')
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\frame.py", line 3163, in __setitem__
+    self._set_item(key, value)
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\frame.py", line 3242, in _set_item
+    value = self._sanitize_column(key, value)
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\frame.py", line 3899, in _sanitize_column
+    value = sanitize_index(value, self.index)
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\internals\construction.py", line 751, in sanitize_index
+    raise ValueError(
+ValueError: Length of values (2) does not match length of index (361000)
+order202129654['pdf'] = 'leeg.pdf'
+order202129654_gedeeld = dataframe_cutter(order202129654,180500)
+order202129654['omschrijving'] = ''
+order202129654_gedeeld = dataframe_cutter(order202129654,180500)
+order202129654_gedeeld = dataframe_cutter(order202129654,9500)
+180500/9500
+19.0
+19*2
+38
+order202129654.shape
+(361000, 3)
+begin_eind_lijst_202129654 =[]
+def begin_eind_dataframe(df_rol):
+    """geeft begin van file, eind van file en aantal van file in tuple format"""
+    begin = df_rol.iat[0, 0]
+    beg = df_rol.iloc[0, 0]
+    einde, kolommen = df_rol.shape
+    eind_positie_rol = einde - 1
+    eind = df_rol.iat[eind_positie_rol, 0]
+    return (begin, eind, einde)
+for i in order202129654_gedeeld:
+    begin_eind_lijst_202129654.append(begin_eind_dataframe(i))
+
+arg_comp = [begin_eind_dataframe(i) for i in order202129654_gedeeld]
+order202129654.columns()
+Traceback (most recent call last):
+  File "<input>", line 1, in <module>
+TypeError: 'Index' object is not callable
+order202129654.columns
+Index([0, 'pdf', 'omschrijving'], dtype='object')
+list(order202129654.columns)
+[0, 'pdf', 'omschrijving']
+test_lijst = basis_lijst()
+de_test_lijst = pd.DataFrame(test_lijst(1, 100, 5)).columns = ['Kolom_1','pdf','omschrijving']
+Traceback (most recent call last):
+  File "<input>", line 3, in <module>
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\generic.py", line 5478, in __setattr__
+    return object.__setattr__(self, name, value)
+  File "pandas\_libs\properties.pyx", line 66, in pandas._libs.properties.AxisProperty.__set__
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\generic.py", line 670, in _set_axis
+    self._mgr.set_axis(axis, labels)
+  File "C:\Users\Dhr. Ten Hoonte\PycharmProjects\heritage_omzetter\venv\lib\site-packages\pandas\core\internals\managers.py", line 220, in set_axis
+    raise ValueError(
+ValueError: Length mismatch: Expected axis has 1 elements, new values have 3 elements
+test_lijst = basis_lijst()
+de_test_lijst = pd.DataFrame(test_lijst(1, 100, 5)).columns = ['Kolom_1']
+test_lijst = basis_lijst()
+de_test_lijst = pd.DataFrame(test_lijst(1, 100, 5))
+def wikkel_aan_file_zetten(dataframe_rol,  wikkel, rolnummer):
+    """neem de csv file en zet er een sluitetiket en een wikkel aan inclusief rolnummer"""
+    kolomnaamlijst= list(dataframe_rol.columns)
+    # kolom naam lijst moet uit de in te lezen file te halen zijn of anders maak zelf file aan
+    begin, eind, rol_aantal = begin_eind_dataframe(dataframe_rol)
+    print(dataframe_rol.head(1))
+    twee_extra = pd.DataFrame(
+        [(f"{begin}", "stans.pdf", "") for x in range(2)],
+        columns=kolomnaamlijst,
+    )
+    wikkel_df = pd.DataFrame(
+        [(f"{begin}", "stans.pdf", "") for x in range(wikkel)],
+        columns=kolomnaamlijst,
+    )
+    sluitstuk = pd.DataFrame(
+        [(f"{begin}", "stans.pdf", f"{rolnummer} | {begin} - {eind} |  {rol_aantal} etiketten")],
+        # f"{rolnummer} {begin} t/m {eind}", "stans.pdf"
+        columns=kolomnaamlijst,
+    )
+    dataframe_van_rol_met_wikkel = pd.concat([twee_extra, sluitstuk, wikkel_df, dataframe_rol])
+    return dataframe_van_rol_met_wikkel
+rollen = [wikkel_aan_file_zetten(i,1, "rolnummer_volgt") for i in order202129654_gedeeld]
+              0       pdf omschrijving
+0  100000833381  leeg.pdf
+              0       pdf omschrijving
+0  100000842881  leeg.pdf
+              0       pdf omschrijving
+0  100000852381  leeg.pdf
+              0       pdf omschrijving
+0  100000861881  leeg.pdf
+              0       pdf omschrijving
+0  100000871381  leeg.pdf
+              0       pdf omschrijving
+0  100000880881  leeg.pdf
+              0       pdf omschrijving
+0  100000890381  leeg.pdf
+              0       pdf omschrijving
+0  100000899881  leeg.pdf
+              0       pdf omschrijving
+0  100000909381  leeg.pdf
+              0       pdf omschrijving
+0  100000918881  leeg.pdf
+              0       pdf omschrijving
+0  100000928381  leeg.pdf
+              0       pdf omschrijving
+0  100000937881  leeg.pdf
+              0       pdf omschrijving
+0  100000947381  leeg.pdf
+              0       pdf omschrijving
+0  100000956881  leeg.pdf
+              0       pdf omschrijving
+0  100000966381  leeg.pdf
+              0       pdf omschrijving
+0  100000975881  leeg.pdf
+              0       pdf omschrijving
+0  100000985381  leeg.pdf
+              0       pdf omschrijving
+0  100000994881  leeg.pdf
+              0       pdf omschrijving
+0  100001004381  leeg.pdf
+              0       pdf omschrijving
+0  100001013881  leeg.pdf
+              0       pdf omschrijving
+0  100001023381  leeg.pdf
+              0       pdf omschrijving
+0  100001032881  leeg.pdf
+              0       pdf omschrijving
+0  100001042381  leeg.pdf
+              0       pdf omschrijving
+0  100001051881  leeg.pdf
+              0       pdf omschrijving
+0  100001061381  leeg.pdf
+              0       pdf omschrijving
+0  100001070881  leeg.pdf
+              0       pdf omschrijving
+0  100001080381  leeg.pdf
+              0       pdf omschrijving
+0  100001089881  leeg.pdf
+              0       pdf omschrijving
+0  100001099381  leeg.pdf
+              0       pdf omschrijving
+0  100001108881  leeg.pdf
+              0       pdf omschrijving
+0  100001118381  leeg.pdf
+              0       pdf omschrijving
+0  100001127881  leeg.pdf
+              0       pdf omschrijving
+0  100001137381  leeg.pdf
+              0       pdf omschrijving
+0  100001146881  leeg.pdf
+              0       pdf omschrijving
+0  100001156381  leeg.pdf
+              0       pdf omschrijving
+0  100001165881  leeg.pdf
+              0       pdf omschrijving
+0  100001175381  leeg.pdf
+              0       pdf omschrijving
+0  100001184881  leeg.pdf
+361000/9500
+38.0
+38/5
+7.6
+40/5
+8.0
+rollen = [wikkel_aan_file_zetten(i, 22, "rolnummer_volgt") for i in order202129654_gedeeld]
+              0       pdf omschrijving
+0  100000833381  leeg.pdf
+              0       pdf omschrijving
+0  100000842881  leeg.pdf
+              0       pdf omschrijving
+0  100000852381  leeg.pdf
+              0       pdf omschrijving
+0  100000861881  leeg.pdf
+              0       pdf omschrijving
+0  100000871381  leeg.pdf
+              0       pdf omschrijving
+0  100000880881  leeg.pdf
+              0       pdf omschrijving
+0  100000890381  leeg.pdf
+              0       pdf omschrijving
+0  100000899881  leeg.pdf
+              0       pdf omschrijving
+0  100000909381  leeg.pdf
+              0       pdf omschrijving
+0  100000918881  leeg.pdf
+              0       pdf omschrijving
+0  100000928381  leeg.pdf
+              0       pdf omschrijving
+0  100000937881  leeg.pdf
+              0       pdf omschrijving
+0  100000947381  leeg.pdf
+              0       pdf omschrijving
+0  100000956881  leeg.pdf
+              0       pdf omschrijving
+0  100000966381  leeg.pdf
+              0       pdf omschrijving
+0  100000975881  leeg.pdf
+              0       pdf omschrijving
+0  100000985381  leeg.pdf
+              0       pdf omschrijving
+0  100000994881  leeg.pdf
+              0       pdf omschrijving
+0  100001004381  leeg.pdf
+              0       pdf omschrijving
+0  100001013881  leeg.pdf
+              0       pdf omschrijving
+0  100001023381  leeg.pdf
+              0       pdf omschrijving
+0  100001032881  leeg.pdf
+              0       pdf omschrijving
+0  100001042381  leeg.pdf
+              0       pdf omschrijving
+0  100001051881  leeg.pdf
+              0       pdf omschrijving
+0  100001061381  leeg.pdf
+              0       pdf omschrijving
+0  100001070881  leeg.pdf
+              0       pdf omschrijving
+0  100001080381  leeg.pdf
+              0       pdf omschrijving
+0  100001089881  leeg.pdf
+              0       pdf omschrijving
+0  100001099381  leeg.pdf
+              0       pdf omschrijving
+0  100001108881  leeg.pdf
+              0       pdf omschrijving
+0  100001118381  leeg.pdf
+              0       pdf omschrijving
+0  100001127881  leeg.pdf
+              0       pdf omschrijving
+0  100001137381  leeg.pdf
+              0       pdf omschrijving
+0  100001146881  leeg.pdf
+              0       pdf omschrijving
+0  100001156381  leeg.pdf
+              0       pdf omschrijving
+0  100001165881  leeg.pdf
+              0       pdf omschrijving
+0  100001175381  leeg.pdf
+              0       pdf omschrijving
+0  100001184881  leeg.pdf
